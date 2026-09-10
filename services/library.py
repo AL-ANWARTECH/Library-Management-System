@@ -29,7 +29,15 @@ class Library:
             print(f"{member.name} borrowed '{book.title}' successfully.") 
         else:
             print(f"'{book.title}' is not available.")
-        
+
+    def return_book(self, member, book):
+        if book in member.borrowed_books:
+            book.is_available = True
+            member.borrowed_books.remove(book)
+            print(f"{member.name} returned '{book.title}' successfully.")
+        else:
+            print(f"{member.name} did not borrow '{book.title}'.")
+
 library = Library()
 
 book1 = Book(1, "Python Crash Course", "Eric Matthes")
@@ -52,3 +60,7 @@ library.display_books()
 library.display_members()
 
 library.borrow_book(member2, book1)
+
+library.return_book(member1, book1)
+
+library.return_book(member2, book1)
