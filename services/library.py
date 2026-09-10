@@ -22,6 +22,14 @@ class Library:
         for member in self.members:
             member.display_info()
 
+    def borrow_book(self, member, book):
+        if book.is_available:
+            book.is_available = False    
+            member.borrowed_books.append(book)
+            print(f"{member.name} borrowed '{book.title}' successfully.") 
+        else:
+            print(f"'{book.title}' is not available.")
+        
 library = Library()
 
 book1 = Book(1, "Python Crash Course", "Eric Matthes")
@@ -38,4 +46,9 @@ member2 = Member(2, "Hafsat", "hafasatmukthar@gmail.com")
 library.register_member(member1)
 library.register_member(member2)
 
+library.borrow_book(member1, book1)
+
+library.display_books()
 library.display_members()
+
+library.borrow_book(member2, book1)

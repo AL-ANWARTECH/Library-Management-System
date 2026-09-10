@@ -9,7 +9,10 @@ class Member:
         print(f"Member ID: {self.member_id}")
         print(f"Name: {self.name}")
         print(f"Email: {self.email}")
-        print(f"Borrowed Books: {self.borrowed_books}")
+        print("Borrowed Books:")
+        for book in self.borrowed_books:
+            print(f"- {book.title}")
+
 
 member1 = Member(1, "Anwar", "anwarsagirmustapha1@gmail.com")
 member2 = Member(2, "Hafsat", "hafsatmukthar@gmail.com")
