@@ -38,6 +38,41 @@ class Library:
         else:
             print(f"{member.name} did not borrow '{book.title}'.")
 
+    def search_by_title(self, title):
+
+        found = False
+
+        for book in self.books:
+            if book.title == title:
+                book.display()
+                found = True
+
+        if not found:
+            print(f"Book '{title}' not found.")
+
+    def search_by_author(self, author):
+        found = False
+
+        for book in self.books:
+            if book.author == author:
+                book.display()
+                found = True
+
+        if not found:
+            print(f"Book '{author}' not found.")
+
+    def search_by_id(self, book_id):
+
+        found = False
+
+        for book in self.books:
+            if book.book_id == book_id:
+                book.display()
+                found = True
+
+        if not found:
+            print(f"Book '{book_id}' not found.")
+
 library = Library()
 
 book1 = Book(1, "Python Crash Course", "Eric Matthes")
@@ -64,3 +99,13 @@ library.borrow_book(member2, book1)
 library.return_book(member1, book1)
 
 library.return_book(member2, book1)
+
+library.search_by_title("Python Crash Course")
+library.search_by_title("Clean Code")
+
+library.search_by_author("Eric Matthes")
+library.search_by_author("Robert Martin")
+
+library.search_by_id(1)
+library.search_by_id(2)
+library.search_by_id(5)
