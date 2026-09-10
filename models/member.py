@@ -12,4 +12,7 @@ class Member:
         print(f"Borrowed Books: {self.borrowed_books}")
 
 member1 = Member(1, "Anwar", "anwarsagirmustapha1@gmail.com")
+member2 = Member(2, "Hafsat", "hafsatmukthar@gmail.com")
+
 member1.display_info()
+member2.display_info()
