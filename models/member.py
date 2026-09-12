@@ -2,6 +2,10 @@ class Member:
     def __init__(self, member_id, name, email):
         self.member_id = member_id
         self.name = name
+
+        if "@" not in email and "." not in email:
+            raise ValueError("Invalid email address.")
+        
         self.email = email
         self.borrowed_books = []
 

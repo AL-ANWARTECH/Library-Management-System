@@ -25,9 +25,19 @@ def main():
 
     member1 = Member(1, "Anwar", "anwarsagirmustapha1@gmail.com")
     member2 = Member(2, "Hafsat", "hafsatmukthar@gmail.com")
+    try:
+        invalid_member = Member(5, "Test User", "invalid-email")
+    except ValueError as error:
+        print(f"Error: {error}")
 
     library.register_member(member1)
     library.register_member(member2)
+
+    library.search_member_by_id(1)
+    library.search_member_by_id(5)
+
+    library.search_member_by_name("anwar")
+    library.search_member_by_name("xyz")
 
 
     # =========================

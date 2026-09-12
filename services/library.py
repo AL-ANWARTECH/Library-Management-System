@@ -95,3 +95,24 @@ class Library:
         if not found:
             print(f"Book '{book_id}' not found.")
 
+    def search_member_by_id(self, member_id):
+        found = False
+
+        for member in self.members:
+            if member.member_id == member_id:
+                member.display_info()
+                found = True
+
+        if not found:
+            print(f"Member '{member_id}' not found.")
+
+    def search_member_by_name(self, name):
+        found = False
+
+        for member in self.members:
+            if name.lower() in member.name.lower():
+                member.display_info()
+                found = True
+
+        if not found:
+            print(f"Member '{name}' not found.")
