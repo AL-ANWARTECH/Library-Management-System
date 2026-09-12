@@ -7,10 +7,19 @@ class Library:
         self.members = []
 
     def add_book(self, book):
+        for existing_book in self.books:
+            if existing_book.book_id == book.book_id:
+                print("Do not add the book")
+                return
         self.books.append(book)
         print(f"Book '{book.title}' added successfully.")
 
     def register_member(self, member):
+        for existing_member in self.members:
+            if existing_member.member_id == member.member_id:
+                print("Do not add member.")
+                return
+            
         self.members.append(member)
         print(f"Member '{member.name}' registered successfully.")
 
@@ -23,6 +32,14 @@ class Library:
             member.display_info()
 
     def borrow_book(self, member, book):
+
+        if member not in self.members:
+            print("Member is not registered.")
+            return
+        if book not in self.books:
+            print("Book is not registered in the library.")
+            return
+        
         if book.is_available:
             book.is_available = False    
             member.borrowed_books.append(book)
@@ -31,6 +48,11 @@ class Library:
             print(f"'{book.title}' is not available.")
 
     def return_book(self, member, book):
+
+        if member not in self.members:
+            print("Member is not registered.")
+            return
+        
         if book in member.borrowed_books:
             book.is_available = True
             member.borrowed_books.remove(book)
@@ -109,3 +131,17 @@ library.search_by_author("Robert Martin")
 library.search_by_id(1)
 library.search_by_id(2)
 library.search_by_id(5)
+
+book3 = Book(1, "Clean Code", "Robert Martin")
+library.add_book(book3)
+member3 = Member(1, "Abdullahi", "abdullahiyakubukabo@gmail.com")
+
+library.register_member(member3)
+
+book4 = Book(4, "Clean Architecture", "Robert Martin")
+
+library.borrow_book(member1, book4)
+
+member4 = Member(4, "Ali", "ali@gmail.com")
+
+library.return_book(member4, book1)
