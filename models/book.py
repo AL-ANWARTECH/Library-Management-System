@@ -10,7 +10,3 @@ class Book:
         print(f"Title: {self.title}")
         print(f"Author: {self.author}")
         print(f"Available: {self.is_available}")
-
-book1 = Book(1, "Python Crash Course", "Eric Matthes")
-
-book1.display()
