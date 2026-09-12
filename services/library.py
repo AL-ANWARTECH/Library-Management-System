@@ -65,7 +65,7 @@ class Library:
         found = False
 
         for book in self.books:
-            if book.title == title:
+            if title.lower() in book.title.lower():
                 book.display()
                 found = True
 
@@ -76,7 +76,7 @@ class Library:
         found = False
 
         for book in self.books:
-            if book.author == author:
+            if author.lower() in book.author.lower():
                 book.display()
                 found = True
 

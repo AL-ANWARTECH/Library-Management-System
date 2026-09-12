@@ -60,23 +60,28 @@ def main():
     # SEARCH BY TITLE
     # =========================
 
-    library.search_by_title("Python Crash Course")
+    library.search_by_title("Python")
+    library.search_by_title("PYTHON CRASH COURSE")
     library.search_by_title("Clean Code")
 
 
     # =========================
     # SEARCH BY AUTHOR
     # =========================
-
-    library.search_by_author("Eric Matthes")
+    library.search_by_author("Eric")
+    library.search_by_author("eric matthes")
+    library.search_by_author("ERIC MATTHES")
     library.search_by_author("Robert Martin")
 
 
     # =========================
     # SEARCH BY ID
     # =========================
-
-    library.search_by_id(1)
+    try: 
+       book_id = int(input("Enter book ID to search: "))
+       library.search_by_id(book_id)
+    except ValueError:
+        print("Invalid book ID. Please enter a number.")
     library.search_by_id(2)
     library.search_by_id(5)
 
